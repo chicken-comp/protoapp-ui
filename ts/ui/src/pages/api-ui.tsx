@@ -140,6 +140,7 @@ function getApiStruct <C> (
       apis_called: [],
       endpoints: getEndpoints(resolver, {value: field.typeExpr}),
       name: field.name,
+      followups: []
     }
 }
 

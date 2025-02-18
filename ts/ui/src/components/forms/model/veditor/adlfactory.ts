@@ -348,12 +348,15 @@ function structVEditor<R>(
     }
   }
 
-  function stateFromValue(value: Record<string,unknown>) {
+  function stateFromValue(value: Record<string,unknown>): StructState { //value is undefined
     const state: StructState = {
       fieldStates: {},
     };
+    // debugger
     for (const fd of fieldDetails) {
+      // console.log("fd[blah]", fd.veditor.stateFromValue(value[fd.name]))
       state.fieldStates[fd.name] = fd.veditor.stateFromValue(value[fd.name]);
+      
     }
     return state;
   }

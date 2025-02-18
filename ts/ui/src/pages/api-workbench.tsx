@@ -98,14 +98,16 @@ export function ApiWorkbenchPresent(props: ApiWorkbenchPresentProps) {
               )
             }
             switch (modal.endpoint.method) {
-              case 'get': return (
+              case 'get': console.log("GET")
+              return (
                 <ModalCreateGetRequest
                   cancel={() => setModal(undefined)}
                   endpoint={modal.endpoint}
                   execute={execute}
                 />
               );
-              case 'post': return (
+              case 'post': console.log("POST")
+              return (
                 <ModalCreatePostRequest
                   cancel={() => setModal(undefined)}
                   endpoint={modal.endpoint}
@@ -231,7 +233,9 @@ function HttpEndpointView(props: {
 function HttpEndpointView2(props: {
   endpoint: apiTypes.HttpEndpoint;
   choose: (e: apiTypes.Endpoint) => void,
-}) {
+}) 
+{
+  // debugger
   return <material.Box sx={{ marginTop: "5px", marginBottom: "5px" }}>
     <material.Button onClick={() => props.choose(props.endpoint)}>
       {props.endpoint.name}
@@ -264,14 +268,15 @@ function ModalCreatePostRequest<I, O>(props: {
   execute: (endpoint: apiTypes.HttpXEndpoint<I, O>, req: I) => void,
   initial: I | undefined,
 }) {
-  // console.log("endpoint", props.endpoint)
+  console.log("intial", props.initial)
+  // debugger
   const state = useAdlFormState({
     veditor: props.endpoint.veditorI,
     jsonBinding: props.endpoint.jsonBindingI,
     value0: props.initial,
   });
+  console.log("intial2", state.value0)
   const value = state.veditor.valueFromState(state.veditorState);
-
   return (
     <Modal onClickBackground={() => props.cancel()}>
       <div>

@@ -212,11 +212,6 @@
       "jsr:@adllang/local-setup@0.16",
       "jsr:@mesqueeb/case-anything@^3.1.0",
       "jsr:@std/path@^1.0.8"
-    ],
-    "packageJson": {
-      "dependencies": [
-        "npm:vitest@^3.0.4"
-      ]
-    }
+    ]
   }
 }

@@ -64,7 +64,7 @@ export function useAdlFormState<T>(params: {
     veditor: VEditor<T>, 
     jsonBinding?: JsonBinding<T>,
   }): AdlFormState<T> {
-
+  console.log("hola", params.value0)
   const [value0, _setValue0] = useState<T|undefined>(params.value0);
   const [pristine, setPristine] = useState<boolean>(true);
   const [veditorState, _setVEditorState] = useState<unknown>(() => makeVeditorState(params.value0));
@@ -73,9 +73,11 @@ export function useAdlFormState<T>(params: {
   const [formValidation, _setFormValidation] = useState<FormValidation>({type: "ok",validationSeq: 0});
 
   function makeVeditorState(v: T | undefined): unknown {
-    return v === undefined
-    ? params.veditor.initialState
-    : params.veditor.stateFromValue(v);
+    console.log("in make VeditorState", v)
+    return params.veditor.initialState
+    // return v === undefined
+    // ? params.veditor.initialState
+    // : params.veditor.stateFromValue(v);
   }
 
   function makeRawState(v: T | undefined): string {
